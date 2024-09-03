@@ -1,11 +1,11 @@
-const Task = () => {
+const Task = ({nameTask, reward}) => {
     return (
         <>
             <div class="flex relative gap-4 items-center p-3 rounded-lg border">
                 <div class="grid grow gap-1.5">
-                    <span class="font-medium leading-tight">Task task 1</span>
+                    <span class="font-medium leading-tight">{nameTask}</span>
                     <div class="flex items-center gap-2.5">
-                        <span class="text-sm font-medium">+50 CATS</span>
+                        <span class="text-sm font-medium">+{reward} CATS</span>
                     </div>
                 </div>
                 <div class="flex gap-2 items-center">
