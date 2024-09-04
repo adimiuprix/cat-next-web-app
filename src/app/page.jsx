@@ -1,10 +1,17 @@
+"use client"
+import { useEffect } from 'react';
+import WebApp from '@twa-dev/sdk'
 import Income from '@/components/Income';
 import Task from '@/components/Task';
 import Image from 'next/image'
-import WebApp from '@twa-dev/sdk'
 
 export default function Home() {
+    useEffect(() => {
+        WebApp.ready();
+    }, []);
+
     const idUser = WebApp.initDataUnsafe.user?.id ?? 'undefined'
+
     return (
         <div className="flex relative flex-col">
             <div className="grow pb-[70px]">
@@ -21,7 +28,7 @@ export default function Home() {
                         <Image src="/main-cat.svg" width={200} height={300} />
                     </div>
                     <div className="h-14 text-center whitespace-nowrap total-cats">
-                        <span className="inline-block font-semibold">818 CATS</span>
+                        <span className="inline-block font-semibold">818 CATS {idUser}</span>
                     </div>
 
                     <div class="flex gap-2 justify-evenly items-center mb-8">
@@ -30,7 +37,7 @@ export default function Home() {
                         <Income title={"Invites"} score={0} />
                     </div>
 
-                    <p class="mb-5 text-2xl font-semibold">Tasks {idUser}</p>
+                    <p class="mb-5 text-2xl font-semibold">Tasks</p>
 
                     <div class="grid gap-3 mb-4">
                         <Task nameTask={"Follow youtube"} reward={"10"} />
