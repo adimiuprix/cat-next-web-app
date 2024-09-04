@@ -25,7 +25,7 @@ export default function Home() {
                         </span>
                         GET MORE CATS WITH NOMIS NOW
                     </span>
-                    <div class="relative mx-auto mt-6 mb-1 size-28">
+                    <div className="relative mx-auto mt-6 mb-1 size-28">
                         <Image src="/main-cat.svg" width={200} height={300} alt={"logo-main"}  priority={true} />
                     </div>
                     <div className="h-14 text-center whitespace-nowrap total-cats">
@@ -41,22 +41,22 @@ export default function Home() {
                     <p className="mb-5 text-2xl font-semibold">Tasks</p>
 
                     <div className="grid gap-3 mb-4">
-                        <Task nameTask={"Follow youtube"} reward={"10"} />
-                        <Task nameTask={"Follow twitter"} reward={"20"} />
-                        <Task nameTask={"Join our group"} reward={"15"} />
-                        <Task nameTask={"Join our channel telegram"} reward={"30"} />
-                        <Task nameTask={"Tonton youtube"} reward={"100"} />
+                        <Task nameTask={"Follow youtube"} reward={10} />
+                        <Task nameTask={"Follow twitter"} reward={20} />
+                        <Task nameTask={"Join our group"} reward={15} />
+                        <Task nameTask={"Join our channel telegram"} reward={30} />
+                        <Task nameTask={"Tonton youtube"} reward={100} />
                     </div>
 
                     <p className="mb-4 text-2xl font-semibold">
-                        Cats <span class="text-xl">&</span> Frens
+                        Cats <span className="text-xl">&</span> Frens
                     </p>
 
                     <div className="grid gap-2 pb-4">
                         <div className="flex gap-10 justify-between items-center">
                             <div className="flex gap-2 items-center">
                                 <span className="grid place-content-center bg-gradient-to-tr from-teal-50 to-sky-100 rounded-full size-10">
-                                    <Image src="/bitget-logo.png" width={100} height={100} alt={'bitget logo'} class="size-8" />
+                                    <Image className="size-8" src="/bitget-logo.png" width={100} height={100} alt={'bitget logo'} />
                                 </span>
                                 <span className="font-medium">Bitget Wallet</span>
                             </div>
