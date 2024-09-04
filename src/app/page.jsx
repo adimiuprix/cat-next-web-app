@@ -13,19 +13,20 @@ export default function Home() {
     const idUser = WebApp.initDataUnsafe.user?.id ?? 'undefined'
 
     return (
+        <>
         <div className="flex relative flex-col">
             <div className="grow pb-[70px]">
                 <div className="px-6 py-3">
                     <span className="flex gap-2 items-center px-3 py-1 mx-auto w-max text-sm font-semibold bg-gradient-to-r from-sky-100 to-purple-100 rounded-lg">
                         <span className="flex gap-1 items-center">
-                            <Image src={"/nomis-logo.svg"} height={25} width={25} alt={'nomis'} priority={'true'} />
+                            <Image src={"/nomis-logo.svg"} height={25} width={25} alt={'nomis'} />
                             <span className="text-lg font-medium">+</span>
                             <span>🐈‍⬛</span>
                         </span>
                         GET MORE CATS WITH NOMIS NOW
                     </span>
                     <div class="relative mx-auto mt-6 mb-1 size-28">
-                        <Image src="/main-cat.svg" width={200} height={300} alt={"logo-main"} />
+                        <Image src="/main-cat.svg" width={200} height={300} alt={"logo-main"}  priority={true} />
                     </div>
                     <div className="h-14 text-center whitespace-nowrap total-cats">
                         <span className="inline-block font-semibold">818 CATS {idUser}</span>
@@ -39,7 +40,7 @@ export default function Home() {
 
                     <p className="mb-5 text-2xl font-semibold">Tasks</p>
 
-                    <div class="grid gap-3 mb-4">
+                    <div className="grid gap-3 mb-4">
                         <Task nameTask={"Follow youtube"} reward={"10"} />
                         <Task nameTask={"Follow twitter"} reward={"20"} />
                         <Task nameTask={"Join our group"} reward={"15"} />
@@ -67,5 +68,6 @@ export default function Home() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
