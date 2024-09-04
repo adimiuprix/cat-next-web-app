@@ -18,14 +18,14 @@ export default function Home() {
                 <div className="px-6 py-3">
                     <span className="flex gap-2 items-center px-3 py-1 mx-auto w-max text-sm font-semibold bg-gradient-to-r from-sky-100 to-purple-100 rounded-lg">
                         <span className="flex gap-1 items-center">
-                            <Image src="/nomis-logo.svg" height={100} width={100} alt="nomis" />
+                            <Image src={"/nomis-logo.svg"} height={25} width={25} alt={'nomis'} priority={'true'} />
                             <span className="text-lg font-medium">+</span>
                             <span>🐈‍⬛</span>
                         </span>
                         GET MORE CATS WITH NOMIS NOW
                     </span>
                     <div class="relative mx-auto mt-6 mb-1 size-28">
-                        <Image src="/main-cat.svg" width={200} height={300} />
+                        <Image src="/main-cat.svg" width={200} height={300} alt={"logo-main"} />
                     </div>
                     <div className="h-14 text-center whitespace-nowrap total-cats">
                         <span className="inline-block font-semibold">818 CATS {idUser}</span>
@@ -55,7 +55,7 @@ export default function Home() {
                         <div className="flex gap-10 justify-between items-center">
                             <div className="flex gap-2 items-center">
                                 <span className="grid place-content-center bg-gradient-to-tr from-teal-50 to-sky-100 rounded-full size-10">
-                                    <Image src="/bitget-logo.png" width={100} height={100} alt="bitget logo" class="size-8" />
+                                    <Image src="/bitget-logo.png" width={100} height={100} alt={'bitget logo'} class="size-8" />
                                 </span>
                                 <span className="font-medium">Bitget Wallet</span>
                             </div>
