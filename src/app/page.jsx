@@ -6,11 +6,6 @@ import Task from '@/components/Task';
 import Image from 'next/image'
 
 export default function Home() {
-    useEffect(() => {
-        WebApp.ready();
-    }, []);
-
-    const idUser = WebApp.initDataUnsafe.user?.id ?? 'undefined'
 
     return (
         <>
@@ -29,7 +24,7 @@ export default function Home() {
                         <Image src="/main-cat.svg" width={200} height={300} alt={"logo-main"}  priority={true} />
                     </div>
                     <div className="h-14 text-center whitespace-nowrap total-cats">
-                        <span className="inline-block font-semibold">818 CATS {idUser}</span>
+                        <span className="inline-block font-semibold">818 CATS</span>
                     </div>
 
                     <div className="flex gap-2 justify-evenly items-center mb-8">
