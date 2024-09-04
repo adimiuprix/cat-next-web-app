@@ -1,10 +1,11 @@
 "use client"
-import { useEffect } from 'react';
 import WebApp from '@twa-dev/sdk'
 import Income from '@/components/Income';
 import Task from '@/components/Task';
 import Image from 'next/image'
 
+WebApp.ready()
+const userName = WebApp.initDataUnsafe.user?.username ?? 'undefined'
 export default function Home() {
 
     return (
@@ -24,7 +25,7 @@ export default function Home() {
                         <Image src="/main-cat.svg" width={200} height={300} alt={"logo-main"}  priority={true} />
                     </div>
                     <div className="h-14 text-center whitespace-nowrap total-cats">
-                        <span className="inline-block font-semibold">818 CATS</span>
+                        <span className="inline-block font-semibold">818 CATS {userName}</span>
                     </div>
 
                     <div className="flex gap-2 justify-evenly items-center mb-8">
