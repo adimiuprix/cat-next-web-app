@@ -1,11 +1,32 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Toastify from 'toastify-js'
 import Image from "next/image"
 
 function Friends() {
-    const reffCode = "eowiteoj"
-    const referralLink = `https://t.me/botname_bot/name_app?startapp=${reffCode}`
+    const [reffCode, setReffCode] = useState(null);
+    useEffect(() => {
+        const fetchReffCode = async () => {
+            try {
+                const res = await fetch('/api/get_reff');
+                const data = await res.json();
+
+                if (res.ok) {
+                    setReffCode(data.reffCode);
+                } else {
+                    setError('Failed to fetch referral code');
+                }
+            } catch (err) {
+                setError('An error occurred while fetching referral code');
+            }
+        };
+
+        fetchReffCode();
+    }, []);
+
+    const botName = "bot_name"
+    const appName = "app_name"
+    const referralLink = `https://t.me/${botName}/${appName}?startapp=${reffCode}`
 
     const linkReff = () => {
         navigator.clipboard.writeText(referralLink)
