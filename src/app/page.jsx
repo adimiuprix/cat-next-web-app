@@ -5,13 +5,6 @@ import Income from '@/components/Income';
 import Task from '@/components/Task';
 
 function Home() {
-    const userDetail = prisma.user.findMany({
-            where: {
-                id: '1'
-            }
-    });
-
-    console.log(userDetail);
 
     return (
         <>
