@@ -1,10 +1,12 @@
-"use client"
-import prisma from "@/lib/prisma"
 import Image from 'next/image'
 import Income from '@/components/Income';
 import Task from '@/components/Task';
 
-function Home() {
+import { loadUser } from '@/lib/action';
+
+async function Home() {
+
+    const user = await loadUser()
 
     return (
         <>
@@ -23,7 +25,7 @@ function Home() {
                         <Image src="/main-cat.svg" width={200} height={300} alt={"logo-main"}  priority={true} />
                     </div>
                     <div className="h-14 text-center whitespace-nowrap total-cats">
-                        <span className="inline-block font-semibold">818 CATS</span>
+                        <span className="inline-block font-semibold">{user.balance} CATS</span>
                     </div>
 
                     <div className="flex gap-2 justify-evenly items-center mb-8">

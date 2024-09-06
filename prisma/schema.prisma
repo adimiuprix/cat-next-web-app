@@ -9,21 +9,15 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id            Int           @id @default(autoincrement())
-  balance       Int           @default(0)
-  chat_id       BigInt        @unique
-  reff_code     String        @unique
-  reff_by       Int?
-  createdAt     DateTime      @default(now())
-}
-
-model Task {
-  id            Int           @id @default(autoincrement())
-  title         String
-  reward_rate   Int
+  id            Int         @id @default(autoincrement())
+  chat_id       Int?
+  balance       Int         @default(0)
+  reff_code     String?
+  reff_by       Int         @default(0)
+  created_at    DateTime    @default(now())
 }
