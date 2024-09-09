@@ -2,11 +2,20 @@ import Image from 'next/image'
 import Income from '@/components/Income';
 import Task from '@/components/Task';
 
-import { loadUser } from '@/lib/action';
+import { validate } from '@/lib/action';
 
 async function Home() {
 
-    const user = await loadUser()
+    const idTele = 174664534
+    const user = await validate(idTele)
+
+    const tasks = [
+        { nameTask: "Follow youtube", reward: 10 },
+        { nameTask: "Follow twitter", reward: 20 },
+        { nameTask: "Join our group", reward: 15 },
+        { nameTask: "Join our channel telegram", reward: 30 },
+        { nameTask: "Tonton youtube", reward: 100 }
+    ];
 
     return (
         <>
@@ -37,11 +46,9 @@ async function Home() {
                     <p className="mb-5 text-2xl font-semibold">Tasks</p>
 
                     <div className="grid gap-3 mb-4">
-                        <Task nameTask={"Follow youtube"} reward={10} />
-                        <Task nameTask={"Follow twitter"} reward={20} />
-                        <Task nameTask={"Join our group"} reward={15} />
-                        <Task nameTask={"Join our channel telegram"} reward={30} />
-                        <Task nameTask={"Tonton youtube"} reward={100} />
+                        {tasks.map((task, index) => (
+                        <Task key={index} nameTask={task.nameTask} reward={task.reward} />
+                        ))}
                     </div>
 
                     <p className="mb-4 text-2xl font-semibold">
