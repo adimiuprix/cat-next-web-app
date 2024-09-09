@@ -15,7 +15,7 @@ datasource db {
 
 model User {
   id            Int         @id @default(autoincrement())
-  chat_id       Int?
+  chat_id       BigInt?
   balance       Int         @default(0)
   reff_code     String?
   reff_by       Int         @default(0)

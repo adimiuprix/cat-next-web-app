@@ -1,20 +1,17 @@
 "use server"
 
 import prisma from '@/lib/prisma';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 
-async function newUser(chat_id, upline) {
-    await prisma.User.create({
+async function newUser(chatId, uplineId) {
+    const user = await prisma.User.create({
         data: {
             balance: 0,
-            chat_id: chat_id,
+            chat_id: chatId,
             reff_code: '567tfhgr5',
-            reff_by: upline,
+            reff_by: uplineId,
         },
     });
-    revalidatePath('/');
-    redirect('/');
+    return user;
 }
 
 export async function validate(id){
@@ -24,9 +21,18 @@ export async function validate(id){
         });
 
         if(!user){
-            console.log("data gak ada")
+            const upl_id = 174664534
+            const upl_res = await prisma.user.findFirst({
+                where: { chat_id: upl_id },
+            });
+
+            const chatId = id
+            const uplineId = upl_res.id;
+
+            const user = await newUser(chatId, uplineId)
+            return user;
         }
-    
+
         return user;
     } catch (error) {
         console.error('Error during validate:', error);

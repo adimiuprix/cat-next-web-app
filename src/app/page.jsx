@@ -1,21 +1,13 @@
 import Image from 'next/image'
 import Income from '@/components/Income';
 import Task from '@/components/Task';
-
+import { tasks } from './utils/Tasks';
 import { validate } from '@/lib/action';
 
 async function Home() {
 
-    const idTele = 174664534
+    const idTele = 4785667002
     const user = await validate(idTele)
-
-    const tasks = [
-        { nameTask: "Follow youtube", reward: 10 },
-        { nameTask: "Follow twitter", reward: 20 },
-        { nameTask: "Join our group", reward: 15 },
-        { nameTask: "Join our channel telegram", reward: 30 },
-        { nameTask: "Tonton youtube", reward: 100 }
-    ];
 
     return (
         <>
