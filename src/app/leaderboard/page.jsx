@@ -1,4 +1,85 @@
+"use client"
+import React, { useState, useEffect } from 'react';
+
 function LeaderBoard(){
+    const [User, setUser] = useState("Loading");
+    const [Balance, setBalance] = useState("Loading");
+    const [TotHolder, setTotHolder] = useState(0);
+    const [AllHolder, setAllHolder] = useState();
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const res = await fetch('/api/get_user');
+                const data = await res.json();
+                if (res.ok) {
+                    setUser(data);
+                } else {
+                    setError('Failed to fetch referral code');
+                }
+            } catch (err) {
+                setError('An error occurred while fetching referral code');
+            }
+        };
+
+        fetchUser();
+    }, []);
+
+    useEffect(() => {
+        const fetchBalance = async () => {
+            try {
+                const res = await fetch('/api/get_balance');
+                const data = await res.json();
+
+                if (res.ok) {
+                    setBalance(data.balance);
+                } else {
+                    setError('Failed to fetch referral code');
+                }
+            } catch (err) {
+                setError('An error occurred while fetching referral code');
+            }
+        };
+
+        fetchBalance();
+    }, []);
+
+    useEffect(() => {
+        const fetchTotHolder = async () => {
+            try {
+                const res = await fetch('/api/get_tot_holder');
+                const data = await res.json();
+                if (res.ok) {
+                    setTotHolder(data);
+                } else {
+                    setError('Failed to fetch total holder');
+                }
+            } catch (err) {
+                setError('An error occurred while fetching holder data');
+            }
+        };
+        fetchTotHolder();
+    }, []);
+    console.log(TotHolder.tot_holders)
+
+    useEffect(() => {
+        const fetchAllHolder = async () => {
+            try {
+                const res = await fetch('/api/get_all_holder');
+                const data = await res.json();
+                if (res.ok) {
+                    setAllHolder(data);
+                } else {
+                    setError('Failed to fetch referral code');
+                }
+            } catch (err) {
+                setError('An error occurred while fetching referral code');
+            }
+        };
+
+        fetchAllHolder();
+    }, []);
+
     return(
         <div className="w-full flex relative flex-col">
             <p className="my-6 text-center text-[32px] font-semibold leading-none">Telegram Wall of Fame</p>
@@ -10,14 +91,15 @@ function LeaderBoard(){
                             <span className="flex items-center gap-1.5 truncate font-medium">
                             <span className="truncate">augom</span>
                             </span>
-                            <span className="text-sm font-medium truncate opacity-60">818 CATS</span>
+                            <span className="text-sm font-medium truncate opacity-60">{Balance} CATS</span>
                         </div>
                     </div>
-                    <span>#8485697</span>
+                    {User !== "Loading" && (<span>#{User.userData.id}</span>)}
                 </div>
             </div>
+
             <div className="flex justify-between items-center mx-5 my-4">
-                <p className="font-semibold">16,306,491 holders</p>
+                <p className="font-semibold">{TotHolder.tot_holders} holders</p>
                 <p className="text-sm opacity-50">(Top 100)</p>
             </div>
             <div className="grid gap-3.5 px-8 pb-6">

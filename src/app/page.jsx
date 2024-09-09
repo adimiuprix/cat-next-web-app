@@ -1,14 +1,14 @@
 import Image from 'next/image'
+import Balance from '@/components/Balance';
 import Income from '@/components/Income';
 import Task from '@/components/Task';
+import { reward } from './utils/Reward';
 import { tasks } from './utils/Tasks';
 import { validate } from '@/lib/action';
 
 async function Home() {
-
-    const idTele = 4785667002
+    const idTele = 634574564
     const user = await validate(idTele)
-
     return (
         <>
         <div className="flex relative flex-col">
@@ -25,14 +25,13 @@ async function Home() {
                     <div className="relative mx-auto mt-6 mb-1 size-28">
                         <Image src="/main-cat.svg" width={200} height={300} alt={"logo-main"}  priority={true} />
                     </div>
-                    <div className="h-14 text-center whitespace-nowrap total-cats">
-                        <span className="inline-block font-semibold">{user.balance} CATS</span>
-                    </div>
+
+                    <Balance props={user.balance} />
 
                     <div className="flex gap-2 justify-evenly items-center mb-8">
-                        <Income title={"Reward"} score={0} />
-                        <Income title={"Task"} score={0} />
-                        <Income title={"Invites"} score={0} />
+                        {reward.map((reward, index) => (
+                        <Income key={index} title={reward.title} score={reward.score} />
+                        ))}
                     </div>
 
                     <p className="mb-5 text-2xl font-semibold">Tasks</p>

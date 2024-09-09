@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 
 async function getRefCode() {
     const user = await prisma.user.findFirst({
-        where: { chat_id: 174664534 },
+        where: { chat_id: 961128575 },
     });
     return user ? user.reff_code : null;
 }
