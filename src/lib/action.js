@@ -1,13 +1,19 @@
 "use server"
 
 import prisma from '@/lib/prisma';
+import randomString from '@smakss/random-string';
 
 async function newUser(chatId, uplineId) {
+    const random = randomString({
+        length: 10,
+        allowedCharacters: 'abcdefghijklmnopqrstuvwxyz0123456789'
+    })
+
     const user = await prisma.User.create({
         data: {
             balance: 0,
             chat_id: chatId,
-            reff_code: '567tfhgr5',
+            reff_code: random,
             reff_by: uplineId,
         },
     });
